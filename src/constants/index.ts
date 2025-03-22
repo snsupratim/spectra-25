@@ -6,6 +6,8 @@ export const NAV_ITEMS = [
   { label: "Event", href: "/event" },
   { label: "Schedule", href: "/schedule" },
   { label: "Contact", href: "/contact" },
+  { label: "Team", href: "/team" },
+  
 ] as const;
 
 export const LINKS = {

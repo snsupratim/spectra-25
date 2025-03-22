@@ -11,6 +11,7 @@ import Schedule from "./components/page/schedule";
 import Event from "./components/page/event";
 import About from "./components/page/about";
 import Contact from "./components/page/contact";
+import Team from "./components/page/team";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/event" element={<Event />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/team" element={<Team />} />
         </Routes>
 
         <Footer />
