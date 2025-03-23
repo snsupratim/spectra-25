@@ -59,8 +59,7 @@ function App() {
             Enter Our Magical Realm
           </h1>
           <p className="mx-auto max-w-2xl text-xl leading-relaxed text-blue-200">
-            Where every visit becomes an enchanted journey through time and
-            space
+            Where every visit becomes an enchanted journey through time and space
           </p>
         </div>
 
@@ -68,56 +67,31 @@ function App() {
         <div className="mx-auto max-w-4xl">
           <div className="neon-glow mb-12 rounded-2xl bg-white/5 p-8 shadow-xl backdrop-blur-lg">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="neon-glow flex transform flex-col items-center space-y-4 rounded-xl bg-white/5 p-6 transition-all duration-300 hover:scale-105">
-                <div className="rounded-full bg-blue-500/20 p-4">
-                  <MapPin className="h-8 w-8 text-blue-300" />
+              {[{icon: MapPin, title: "Visit Us", text: "123 Enchanted Forest Lane"},
+                {icon: Phone, title: "Call Us", text: "+1 (555) 123-4567"},
+                {icon: Mail, title: "Email Us", text: "hello@magicalrealm.com"}].map((item, index) => (
+                <div key={index} className="neon-glow flex transform flex-col items-center space-y-4 rounded-xl bg-white/5 p-6 transition-all duration-300 hover:scale-105">
+                  <div className="rounded-full bg-blue-500/20 p-4">
+                    <item.icon className="h-8 w-8 text-blue-300" />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold text-blue-200">{item.title}</h3>
+                    <p className="mt-2 text-blue-300">{item.text}</p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold text-blue-200">
-                    Visit Us
-                  </h3>
-                  <p className="mt-2 text-blue-300">
-                    123 Enchanted Forest Lane
-                  </p>
-                </div>
-              </div>
-
-              <div className="neon-glow flex transform flex-col items-center space-y-4 rounded-xl bg-white/5 p-6 transition-all duration-300 hover:scale-105">
-                <div className="rounded-full bg-blue-500/20 p-4">
-                  <Phone className="h-8 w-8 text-blue-300" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold text-blue-200">
-                    Call Us
-                  </h3>
-                  <p className="mt-2 text-blue-300">+1 (555) 123-4567</p>
-                </div>
-              </div>
-
-              <div className="neon-glow flex transform flex-col items-center space-y-4 rounded-xl bg-white/5 p-6 transition-all duration-300 hover:scale-105">
-                <div className="rounded-full bg-blue-500/20 p-4">
-                  <Mail className="h-8 w-8 text-blue-300" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold text-blue-200">
-                    Email Us
-                  </h3>
-                  <p className="mt-2 text-blue-300">hello@magicalrealm.com</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Map */}
           <div className="neon-glow h-80 overflow-hidden rounded-2xl bg-white/5">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3682.915324404707!2d88.3451222091869!3d22.619636979372576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1742658554016!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.915324404707!2d88.3451222091869!3d22.619636979372576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1742707219937!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0, filter: "grayscale(100%)" }}
-              loading="lazy"
+              style={{border: 0, filter: "grayscale(30%) contrast(120%) brightness(90%) sepia(10%) hue-rotate(230deg)"}}
+              loading="eager"
               referrerPolicy="no-referrer-when-downgrade"
-              className="brightness-75 filter"
             ></iframe>
           </div>
         </div>
@@ -129,30 +103,12 @@ function App() {
           </h2>
           <div className="mx-auto max-w-3xl space-y-4">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="neon-glow transform overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg transition-all duration-300 hover:bg-white/10"
-              >
-                <button
-                  className="flex w-full items-center justify-between px-6 py-4 text-left"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                >
-                  <span className="text-lg font-semibold text-blue-200">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    className={`h-5 w-5 transform text-blue-300 transition-transform duration-300 ${
-                      openFaq === index ? "rotate-180" : ""
-                    }`}
-                  />
+              <div key={index} className="neon-glow transform overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg transition-all duration-300 hover:bg-white/10">
+                <button className="flex w-full items-center justify-between px-6 py-4 text-left" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
+                  <span className="text-lg font-semibold text-blue-200">{faq.question}</span>
+                  <ChevronDown className={`h-5 w-5 transform text-blue-300 transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""}`} />
                 </button>
-                <div
-                  className={`overflow-hidden px-6 transition-all duration-500 ease-in-out ${
-                    openFaq === index ? "max-h-40 py-4" : "max-h-0"
-                  }`}
-                >
-                  <p className="text-blue-300">{faq.answer}</p>
-                </div>
+                {openFaq === index && <div className="px-6 py-4 text-blue-300">{faq.answer}</div>}
               </div>
             ))}
           </div>
