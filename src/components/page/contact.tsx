@@ -4,11 +4,7 @@ import {
   Phone,
   Mail,
   ChevronDown,
-  Wind,
-  Cloud,
-  Stars,
-  Sparkles,
-  Moon,
+
 } from "lucide-react";
 
 function App() {

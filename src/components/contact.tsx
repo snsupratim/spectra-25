@@ -14,12 +14,6 @@ const ImageClipBox = ({ src, alt, clipClass }: ImageClipBoxProps) => (
   </div>
 );
 
-// Define the props for the Button component (if not already defined in ./button)
-interface ButtonProps {
-  children: React.ReactNode;
-  containerClass?: string;
-  [key: string]: any; // For additional props like onClick, etc.
-}
 
 // Ensure the Button component in ./button is typed correctly
 // Example of what ./button.tsx might look like:
