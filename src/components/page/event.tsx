@@ -1,18 +1,28 @@
 import { useState } from "react";
 import { Brain, Puzzle, Award, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { JSX } from "react";
 
 // Tech Images
-import tech1 from "/public/img/tech1.avif"; // Replace with your image paths
+import tech1 from "/public/img/tech1.avif";
 import tech2 from "/public/img/tech2.avif";
 import tech3 from "/public/img/tech3.avif";
 
-const EventPage = () => {
-  const [flippedCards, setFlippedCards] = useState([]);
-  const [popupVisible, setPopupVisible] = useState(false);
-  const [selectedRound, setSelectedRound] = useState(null);
+interface EventRound {
+  title: string;
+  icon: JSX.Element;
+  time: string;
+  description: string;
+  image: string; // If using imported images, change to `image: any;`
+  furtherDetails: string;
+}
 
-  const eventRounds = [
+const EventPage = () => {
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [popupVisible, setPopupVisible] = useState<boolean>(false);
+  const [selectedRound, setSelectedRound] = useState<EventRound | null>(null);
+
+  const eventRounds: EventRound[] = [
     {
       title: "Round 1: Screening",
       icon: <Brain className="h-8 w-8" />,
@@ -44,13 +54,13 @@ const EventPage = () => {
     },
   ];
 
-  const handleCardFlip = (index) => {
+  const handleCardFlip = (index: number) => {
     if (!flippedCards.includes(index)) {
       setFlippedCards([...flippedCards, index]);
     }
   };
 
-  const handleShowMore = (index) => {
+  const handleShowMore = (index: number) => {
     setSelectedRound(eventRounds[index]);
     setPopupVisible(true);
   };
@@ -65,9 +75,7 @@ const EventPage = () => {
       id="event"
       className="relative min-h-screen bg-[#001d35] px-4 py-20"
     >
-      {/* Event Rounds Section */}
       <div className="relative z-10 mx-auto max-w-7xl space-y-16">
-        {/* Event Heading */}
         <motion.h2
           className="font-orbitron mb-12 pt-24 text-center text-5xl font-bold uppercase text-[#E94560] md:text-6xl"
           initial={{ opacity: 0, y: -50 }}
@@ -78,7 +86,6 @@ const EventPage = () => {
           Event Rounds
         </motion.h2>
 
-        {/* Rounds Cards */}
         <div className="space-y-16">
           {eventRounds.map((round, index) => (
             <div
@@ -91,7 +98,6 @@ const EventPage = () => {
                     : "flex-row-reverse"
               } items-center justify-center gap-8`}
             >
-              {/* Tech Image with Neon Moving Boundary */}
               <div className="relative w-full max-w-[400px] flex-1">
                 <div
                   className="absolute inset-0 rounded-lg"
@@ -107,63 +113,45 @@ const EventPage = () => {
                 />
               </div>
 
-              {/* Round Card */}
               <motion.div
-                className={`relative z-20 flex min-h-[200px] w-full max-w-[400px] flex-1 flex-col items-center justify-center rounded-2xl border border-white/20 bg-[#E94560]/20 p-6 backdrop-blur-lg transition-all duration-200 hover:bg-[#E94560]/30 hover:shadow-[0_0_20px_rgba(233,69,96,0.5)]`}
+                className="relative z-20 flex min-h-[200px] w-full max-w-[400px] flex-1 flex-col items-center justify-center rounded-2xl border border-white/20 bg-[#E94560]/20 p-6 backdrop-blur-lg transition-all duration-200 hover:bg-[#E94560]/30 hover:shadow-[0_0_20px_rgba(233,69,96,0.5)]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.2 }}
                 whileHover={{ scale: 1.1 }}
-                onHoverStart={() => handleCardFlip(index)}
+                onMouseEnter={() => handleCardFlip(index)}
               >
-                {/* Front of the Card (Initially Visible) */}
                 {!flippedCards.includes(index) && (
-                  <motion.div
-                    className="flex h-full w-full flex-col items-center justify-center p-6"
-                    initial={{ rotateY: 0 }}
-                    animate={{ rotateY: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <div className="flex h-full w-full flex-col items-center justify-center p-6">
                     <div className="text-[#E94560]">{round.icon}</div>
                     <h3 className="font-orbitron mt-4 text-center text-2xl font-bold uppercase text-[#E94560]">
                       {round.title}
                     </h3>
-                  </motion.div>
+                  </div>
                 )}
 
-                {/* Back of the Card (Revealed on Hover) */}
                 {flippedCards.includes(index) && (
-                  <motion.div
-                    className="w-full space-y-4 p-6 text-center"
-                    initial={{ rotateY: 180 }}
-                    animate={{ rotateY: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <div className="w-full space-y-4 p-6 text-center">
                     <h3 className="font-orbitron text-2xl font-bold uppercase text-[#E94560]">
                       {round.title}
                     </h3>
                     <div className="flex items-center justify-center gap-4 text-gray-300">
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        <span className="font-general">{round.time}</span>
-                      </div>
+                      <Clock className="h-4 w-4" />
+                      <span className="font-general">{round.time}</span>
                     </div>
-                    <p className="break-words font-circular-web leading-relaxed text-gray-200">
+                    <p className="font-circular-web text-gray-200">
                       {round.description}
                     </p>
-                    {/* Show More Button */}
                     <motion.button
                       className="mt-4 rounded-full bg-gradient-to-r from-[#00FF87] to-[#60EFFF] px-4 py-2 text-sm font-bold transition-all duration-300 hover:scale-105"
-                      style={{
-                        boxShadow: "0 0 10px rgba(0, 255, 135, 0.8)",
-                      }}
+                      style={{ boxShadow: "0 0 10px rgba(0, 255, 135, 0.8)" }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleShowMore(index)}
                     >
                       Show More
                     </motion.button>
-                  </motion.div>
+                  </div>
                 )}
               </motion.div>
             </div>
@@ -171,36 +159,22 @@ const EventPage = () => {
         </div>
       </div>
 
-      {/* Pop-up Card */}
       {popupVisible && selectedRound && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <motion.div
-            className="relative flex max-h-[80vh] min-h-[300px] w-full max-w-2xl flex-col overflow-y-auto rounded-2xl border border-white/20 bg-[#E94560]/20 p-8 backdrop-blur-lg"
+            className="relative flex w-full max-w-2xl flex-col rounded-2xl border border-white/20 bg-[#E94560]/20 p-8 backdrop-blur-lg"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="font-orbitron mb-4 text-2xl font-bold uppercase text-[#E94560]">
+            <h3 className="font-orbitron text-2xl font-bold uppercase text-[#E94560]">
               {selectedRound.title}
             </h3>
-            <div className="mb-6 flex items-center gap-4 text-gray-300">
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span className="font-general">{selectedRound.time}</span>
-              </div>
-            </div>
-            <p className="mb-6 break-words font-circular-web leading-relaxed text-gray-200">
+            <p className="font-circular-web text-gray-200">
               {selectedRound.furtherDetails}
             </p>
-            {/* Close Button */}
             <motion.button
-              className="mt-4 rounded-full bg-gradient-to-r from-[#00FF87] to-[#60EFFF] px-4 py-2 text-sm font-bold transition-all duration-300 hover:scale-105"
-              style={{
-                boxShadow: "0 0 10px rgba(0, 255, 135, 0.8)",
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="mt-4 rounded-full bg-gradient-to-r from-[#00FF87] to-[#60EFFF] px-4 py-2 text-sm font-bold"
               onClick={handleClosePopup}
             >
               Close
@@ -208,18 +182,6 @@ const EventPage = () => {
           </motion.div>
         </div>
       )}
-
-      {/* Neon Glow Animation */}
-      <style jsx>{`
-        @keyframes neon-glow {
-          0% {
-            box-shadow: 0 0 10px rgba(233, 69, 96, 0.8);
-          }
-          100% {
-            box-shadow: 0 0 20px rgba(233, 69, 96, 1);
-          }
-        }
-      `}</style>
     </section>
   );
 };
