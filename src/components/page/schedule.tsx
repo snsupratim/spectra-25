@@ -244,7 +244,7 @@ const Schedule = () => {
   });
 
   const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
