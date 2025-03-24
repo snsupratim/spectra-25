@@ -80,13 +80,11 @@ export const Features = () => {
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
           <p className="font-circular-web text-lg text-blue-50">
-            Into the Metagame Layer
-          </p>
+          Immerse yourself in the exciting realm of the event's game layer!
+                    </p>
 
           <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-            Immerse yourself in a rich and ever-expanding universe where a
-            vibrant array of products converge into an interconnected overlay
-            experience on your world.
+          The event's game layer offers an immersive experience where participants can engage in exciting challenges, solve puzzles, and explore thrilling adventures. Get ready to test your skills and have fun!
           </p>
         </div>
 
@@ -119,30 +117,60 @@ export const Features = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: "url('/img/art7.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
             <BentoCard
-              src="/videos/feature-3.mp4"
               title={
-                <>
-                  n<b>e</b>xus
-                </>
+                <span className="text-white">
+                  Round 1
+                </span>
               }
-              description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+              description={
+                <span className="text-white">
+                  An anime and gaming-inspired NFT collection - the IP primed for expansion.
+                </span>
+              }
+              src={""}
+              className="text-black"
             />
+          </div>
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
-            <BentoCard
-              src="/videos/feature-4.mp4"
-              title={
-                <>
-                  az<b>u</b>l
-                </>
-              }
-              description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            />
-          </BentoTilt>
+  <div
+    className="w-full h-full"
+    style={{
+      backgroundImage: "url('/img/wwy.jpg')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    <BentoCard
+      title={
+        <span className="text-black">
+          Round 2
+        </span>
+      }
+      description={
+        <span className="text-black">
+          An anime and gaming-inspired NFT collection - the IP primed for expansion.
+        </span>
+      }
+      src={""}
+      className="text-black"
+    />
+  </div>
+</BentoTilt>
 
-          <BentoTilt className="bento-tilt_2">
+
+
+          {/* <BentoTilt className="bento-tilt_2" >
             <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
               <h1 className="bento-title special-font max-w-64 text-black">
                 M<b>o</b>re co<b>m</b>ing so<b>o</b>n!
@@ -150,17 +178,52 @@ export const Features = () => {
 
               <TiLocationArrow className="m-5 scale-[5] self-end" />
             </div>
-          </BentoTilt>
+          </BentoTilt> */}
 
           <BentoTilt className="bento-tilt_2">
-            <video
-              src="/videos/feature-5.mp4"
-              loop
-              muted
-              autoPlay
-              className="size-full object-cover object-center"
+  <div
+    className="flex size-full flex-col justify-between bg-cover bg-center p-5"
+    style={{ backgroundImage: "url('/img/gift2.png')" }}
+  >
+    <h1 className="bento-title special-font max-w-64 text-[#FFF000]">
+      W<b>i</b>n Amazin<b>g</b> Prizes
+    </h1>
+
+    <TiLocationArrow className="m-5 scale-[5] self-end text-[#FFF000]" />
+  </div>
+</BentoTilt>
+
+
+
+        <BentoTilt className="bento-tilt_2">
+          <div
+            style={{
+              backgroundImage: "url('/img/art3.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            {/* Your content goes here */}
+            <BentoCard
+              title={
+                <span className="text-white">
+                  Round 3
+                </span>
+              }
+              description={
+                <span className="text-white">
+                  An anime and gaming-inspired NFT collection - the IP primed for expansion.
+                </span>
+              }
+              src={""}
+              className="text-black"
             />
-          </BentoTilt>
+          </div>
+        </BentoTilt>
+
+
         </div>
       </div>
     </section>

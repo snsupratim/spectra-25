@@ -2,7 +2,7 @@ import { SOCIAL_LINKS } from "@/constants";
 
 export const Footer = () => {
   return (
-    <footer className="w-screen bg-violet-300 py-4 text-violet-50">
+    <footer className="w-screen bg-[#001d35e0] py-4 text-violet-50">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-8 md:flex-row">
         <p className="text-center text-sm md:text-left">
           &copy; <strong className="font-semibold">SPECTRA</strong>{" "}

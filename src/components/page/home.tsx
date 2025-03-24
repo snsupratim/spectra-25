@@ -3,6 +3,9 @@ import { Contact } from "@/components/contact";
 import { Features } from "@/components/features";
 import { Hero } from "@/components/hero";
 import { Story } from "@/components/story";
+import { Sp } from "@/components/sp";
+
+
 
 const Home = () => {
   return (
@@ -11,6 +14,8 @@ const Home = () => {
         <Hero />
         <About />
         <Features />
+        <Sp />
+
         <Story />
         <Contact />
       </main>
