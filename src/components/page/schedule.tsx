@@ -11,7 +11,7 @@ const timelineData: TimelineEntry[] = [
     title: "Register at SPECTRA'25.",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Register for SPECTRA 2025 through this website .
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
@@ -43,7 +43,7 @@ const timelineData: TimelineEntry[] = [
     title: "Experience Round-1",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Developed a simple To-Do list app using React and Firebase.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
@@ -75,7 +75,7 @@ const timelineData: TimelineEntry[] = [
     title: "Lunch Break",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Participated in my first hackathon and worked on an AI-powered
           chatbot.
         </p>
@@ -108,7 +108,7 @@ const timelineData: TimelineEntry[] = [
     title: "Experience Round-2",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Participated in my first hackathon and worked on an AI-powered
           chatbot.
         </p>
@@ -141,7 +141,7 @@ const timelineData: TimelineEntry[] = [
     title: "Experience Round-3",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Built a MERN stack application for a college project.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
@@ -173,7 +173,7 @@ const timelineData: TimelineEntry[] = [
     title: "Prize Distribution",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Participated in my first hackathon and worked on an AI-powered
           chatbot.
         </p>
@@ -206,27 +206,17 @@ const timelineData: TimelineEntry[] = [
     title: "GoodBy",
     content: (
       <div>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-white dark:text-white">
           Please be patient for Certificates.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
           <img
-            src="https://assets.aceternity.com/templates/startup-1.webp"
+            src="/img/art3.webp"
             alt="startup template"
             className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
           />
           <img
-            src="https://assets.aceternity.com/templates/startup-2.webp"
-            alt="startup template"
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/templates/startup-3.webp"
-            alt="startup template"
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/templates/startup-4.webp"
+            src="/img/art3.webp"
             alt="startup template"
             className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
           />
@@ -291,7 +281,7 @@ const Schedule = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen overflow-x-hidden">
+    <div className="relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white">
       <div className="mt-10 w-full font-sans md:px-10 dark:bg-neutral-950">
         {/* Animated Header Section */}
         <motion.div
@@ -300,10 +290,10 @@ const Schedule = () => {
           animate="visible" // Use animate instead of whileInView for initial load animation
           variants={headerVariants}
         >
-          <h2 className="mb-4 max-w-4xl text-lg text-black md:text-4xl dark:text-white">
+          <h2 className="mb-4 max-w-4xl text-lg text-white md:text-4xl dark:text-white">
             SPECTRA-2K25 Event Schedule!
           </h2>
-          <p className="max-w-sm text-sm text-neutral-700 md:text-base dark:text-neutral-300">
+          <p className="max-w-sm text-sm text-white md:text-base">
             This timeline showcases the steps for you to complete the event.
           </p>
         </motion.div>
@@ -322,16 +312,16 @@ const Schedule = () => {
                 <div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white md:left-3 dark:bg-black">
                   <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
                 </div>
-                <h3 className="hidden text-xl font-bold text-neutral-500 md:block md:pl-20 md:text-5xl dark:text-neutral-500">
+                <h3 className="hidden text-xl font-bold text-white md:block md:pl-20 md:text-5xl dark:text-white">
                   {item.title}
                 </h3>
               </div>
 
-              <div className="relative w-full pl-20 pr-4 md:pl-4">
-                <h3 className="mb-4 block text-left text-2xl font-bold text-neutral-500 md:hidden dark:text-neutral-500">
+              <div className="relative w-full pl-20 pr-4 text-white md:pl-4">
+                <h3 className="mb-4 block text-left text-2xl font-bold text-white md:hidden">
                   {item.title}
                 </h3>
-                {item.content}
+                <div className="text-white">{item.content}</div>
               </div>
             </motion.div>
           ))}
