@@ -46,7 +46,7 @@ function App() {
                   <label className="block text-gray-300 text-sm mb-1">FULL NAME *</label>
                   <input
                     type="text"
-                    placeholder="Richard D. Hammond"
+                    placeholder="Richard Hammond"
                     className="w-full p-3 bg-[#2a3b4c] text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-500"
                   />
                 </div>
@@ -64,7 +64,7 @@ function App() {
                   <label className="block text-gray-300 text-sm mb-1">PHONE NUMBER *</label>
                   <input
                     type="text"
-                    placeholder="+880 (123) 456 88"
+                    placeholder="+91 9999999999"
                     className="w-full p-3 bg-[#2a3b4c] text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-500"
                   />
                 </div>
@@ -162,7 +162,7 @@ function App() {
         {/* Map Section */}
         <div className="mt-20 h-[400px] overflow-hidden rounded-2xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.241264871293!2d-74.00597408459392!3d40.71277527933191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1f4b1e4b4f%3A0x7e0e0e0e0e0e0e0e!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1742658554016!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.915324404707!2d88.3451222091869!3d22.619636979372576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1743003836835!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{
