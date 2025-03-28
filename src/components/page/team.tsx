@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 import { useState } from "react";
 
-// Define the type for team members
 interface TeamMember {
   id: number;
   name: string;
@@ -16,13 +15,12 @@ interface TeamMember {
   };
 }
 
-// Sample team data
 const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Naruto Uzumaki",
-    role: "Hokage",
-    image: "https://res.cloudinary.com/dqievv927/image/upload/v1742628150/Naru_r5wk0i.jpg",
+    role: "Lead Developer",
+    image: "https://res.cloudinary.com/dqievv927/image/upload/v1743086403/Vizu1/velye9g6dhk0zwtzlzxi.jpg",
     socials: {
       twitter: "https://twitter.com/naruto",
       instagram: "https://instagram.com/naruto",
@@ -32,7 +30,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 2,
     name: "Sasuke Uchiha",
-    role: "Shadow Hokage",
+    role: "Senior Developer",
     image: "https://via.placeholder.com/150",
     socials: {
       twitter: "https://twitter.com/sasuke",
@@ -42,7 +40,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 3,
     name: "Sakura Haruno",
-    role: "Medical Ninja",
+    role: "UI/UX Designer",
     image: "https://via.placeholder.com/150",
     socials: {
       instagram: "https://instagram.com/sakura",
@@ -52,7 +50,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 4,
     name: "Kakashi Hatake",
-    role: "Copy Ninja",
+    role: "Project Manager",
     image: "https://via.placeholder.com/150",
     socials: {
       twitter: "https://twitter.com/kakashi",
@@ -62,7 +60,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 5,
     name: "Itachi Uchiha",
-    role: "Genius Strategist",
+    role: "CTO",
     image: "https://via.placeholder.com/150",
     socials: {
       twitter: "https://twitter.com/itachi",
@@ -72,7 +70,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 6,
     name: "Hinata Hyuga",
-    role: "Byakugan Princess",
+    role: "Frontend Developer",
     image: "https://via.placeholder.com/150",
     socials: {
       instagram: "https://instagram.com/hinata",
@@ -82,7 +80,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 7,
     name: "Gaara",
-    role: "Kazekage",
+    role: "Backend Developer",
     image: "https://via.placeholder.com/150",
     socials: {
       twitter: "https://twitter.com/gaara",
@@ -92,7 +90,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 8,
     name: "Rock Lee",
-    role: "Taijutsu Master",
+    role: "Graphic Designer",
     image: "https://via.placeholder.com/150",
     socials: {
       twitter: "https://twitter.com/rocklee",
@@ -101,7 +99,8 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-// Enhanced animation variants
+type RoleFilter = "All Roles" | "Developer" | "Designer" | "Management";
+
 const cardVariants = {
   offscreen: {
     y: 150,
@@ -131,7 +130,6 @@ const cardVariants = {
   },
 };
 
-// Dimmed and slowed laser border animation with breathing effect
 const laserBorder = {
   borderColor: [
     "#FF00FF80",
@@ -151,12 +149,64 @@ const laserBorder = {
   ],
 };
 
+const buttonVariants = {
+  inactive: {
+    scale: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    color: "#FFFFFF",
+    borderColor: "rgba(255, 255, 255, 0.2)",
+  },
+  active: {
+    scale: 1.05,
+    backgroundColor: "rgba(233, 69, 96, 0.5)",
+    color: "#FFFFFF",
+    borderColor: "#E94560",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  hover: {
+    scale: 1.03,
+    backgroundColor: "rgba(233, 69, 96, 0.3)",
+    transition: {
+      duration: 0.2
+    }
+  }
+};
+
+const roleColors: Record<RoleFilter, string> = {
+  "Developer": "#E94560",    // Red for developers
+  "Designer": "#60EFFF",     // Blue for designers
+  "Management": "#00FF87",   // Green for management
+  "All Roles": "#FFFFFF"     // Default white
+};
+
 const Team = () => {
   const [expandedCardId, setExpandedCardId] = useState<number | null>(null);
+  const [activeFilter, setActiveFilter] = useState<RoleFilter>("All Roles");
+
+  const categorizeRole = (role: string): RoleFilter => {
+    if (role.includes("Developer")) return "Developer";
+    if (role.includes("Designer")) return "Designer";
+    if (role === "Project Manager" || role === "CTO") return "Management";
+    return "All Roles";
+  };
+
+  const filteredMembers = teamMembers.filter(member => 
+    activeFilter === "All Roles" || categorizeRole(member.role) === activeFilter
+  );
+
+  const roleFilters: RoleFilter[] = [
+    "All Roles",
+    "Developer",
+    "Designer",
+    "Management"
+  ];
 
   return (
-    <div className="relative min-h-screen w-screen overflow-x-hidden bg-gradient-to-br from-[#0a001f] to-[#1a0044]">
-      {/* Define custom fonts locally */}
+    <div className="relative min-h-screen w-screen overflow-x-hidden bg-gradient-to-br from-[#0a001f] to-[#1a0044] pb-24">
       <style>
         {`
           @font-face {
@@ -186,11 +236,14 @@ const Team = () => {
 
       <Navbar />
 
-      {/* Team Section */}
       <div className="relative z-10 min-h-screen pt-24 px-8 sm:px-12 lg:px-16">
         <motion.h1
-          className="text-4xl md:text-5xl font-bold text-center text-white mb-12 glow-text"
-          style={{ fontFamily: "Ghibli-Bold, sans-serif" }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12 glow-text"
+          style={{ 
+            fontFamily: "Ghibli-Bold, sans-serif",
+            color: "#E94560",
+            textShadow: "0 0 20px rgba(233, 69, 96, 0.8)"
+          }}
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, type: "spring" }}
@@ -198,16 +251,40 @@ const Team = () => {
           Meet Our Team
         </motion.h1>
 
+        <motion.div 
+          className="flex flex-wrap justify-center gap-4 mb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          {roleFilters.map((filter) => (
+            <motion.button
+              key={filter}
+              className={`px-6 py-2 rounded-full border-2 font-medium transition-all ${
+                activeFilter === filter ? "border-[#E94560]" : "border-white/20"
+              }`}
+              variants={buttonVariants}
+              initial="inactive"
+              animate={activeFilter === filter ? "active" : "inactive"}
+              whileHover="hover"
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
+            </motion.button>
+          ))}
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {teamMembers.map((member) => (
+          {filteredMembers.map((member, index) => (
             <motion.div
               key={member.id}
               className="relative bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-xl rounded-2xl p-6 overflow-hidden border-4"
               initial="offscreen"
               whileInView="onscreen"
               whileHover="hover"
-              viewport={{ once: true, amount: 0.8 }}
+              viewport={{ once: false, margin: "0px 0px -100px 0px" }}
               variants={cardVariants}
+              custom={index}
               onHoverStart={() => setExpandedCardId(member.id)}
               onHoverEnd={() => setExpandedCardId(null)}
               animate={{
@@ -219,7 +296,6 @@ const Team = () => {
                 boxShadow: { duration: 6, repeat: Infinity, ease: "easeInOut" },
               }}
             >
-              {/* Chakra Energy Overlay */}
               <motion.div
                 className="chakra-overlay"
                 animate={{
@@ -229,7 +305,6 @@ const Team = () => {
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
 
-              {/* Animated Sparkles */}
               <motion.div
                 className="absolute top-2 right-2"
                 animate={{ 
@@ -265,8 +340,11 @@ const Team = () => {
                   {member.name}
                 </h2>
                 <motion.p 
-                  className="text-cyan-300 mb-4 font-semibold"
-                  style={{ fontFamily: "Ghibli, sans-serif" }}
+                  className="mb-2 font-semibold"
+                  style={{ 
+                    fontFamily: "Ghibli, sans-serif",
+                    color: roleColors[categorizeRole(member.role)]
+                  }}
                   animate={{ y: [0, -3, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -326,6 +404,24 @@ const Team = () => {
             </motion.div>
           ))}
         </div>
+
+        {filteredMembers.length === 0 && (
+          <motion.div 
+            className="col-span-full text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <h3 className="text-2xl text-white/80 mb-4">No team members found in this role</h3>
+            <motion.button
+              className="px-6 py-2 rounded-full bg-[#E94560] text-white font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveFilter("All Roles")}
+            >
+              Show All Team Members
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </div>
   );
